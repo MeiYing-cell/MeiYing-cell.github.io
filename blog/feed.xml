@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss version="2.0">
+  <channel>
+    <title>朱波的博客</title>
+    <link>https://meiying-cell.github.io/blog/</link>
+    <description>算法、大模型、产品与个人成长</description>
+    <language>zh-CN</language>
+    <item>
+      <title>做过大模型实习后，我开始给技术经验标注‘保质期’</title>
+      <link>https://meiying-cell.github.io/blog/llm-experience-shelf-life/</link>
+      <guid>https://meiying-cell.github.io/blog/llm-experience-shelf-life/</guid>
+      <description>从后训练和 RAG 的实习经历出发，聊聊模型进步如何改变应用开发，以及哪些能力值得长期积累。</description>
+      <category>个人思考</category>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>AI 时代，我开始更在意解决问题的能力</title>
+      <link>https://meiying-cell.github.io/blog/ai-problem-solving-loop/</link>
+      <guid>https://meiying-cell.github.io/blog/ai-problem-solving-loop/</guid>
+      <description>从 Why、What、How 出发，聊聊如何定义问题、选择方法，以及怎样通过反馈把一次实践变成下一次能用上的经验。</description>
+      <category>个人思考</category>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 +0800</pubDate>
+    </item>
+    <item>
+      <title>算法工程师，也需要产品思维</title>
+      <link>https://meiying-cell.github.io/blog/algorithm-engineer-product-thinking/</link>
+      <guid>https://meiying-cell.github.io/blog/algorithm-engineer-product-thinking/</guid>
+      <description>算法方案的技术深度值得追求，但也需要回答：问题是否重要，简单方案是否够用，增加的复杂度是否值得。</description>
+      <category>个人思考</category>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 +0800</pubDate>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,100 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>做过大模型实习后，我开始给技术经验标注‘保质期’ · 朱波</title><meta name="description" content="从后训练和 RAG 的实习经历出发，聊聊模型进步如何改变应用开发，以及哪些能力值得长期积累。"><meta name="theme-color" content="#f8f9f5"><link rel="canonical" href="https://meiying-cell.github.io/blog/llm-experience-shelf-life/"><meta property="og:title" content="做过大模型实习后，我开始给技术经验标注‘保质期’"><meta property="og:description" content="从后训练和 RAG 的实习经历出发，聊聊模型进步如何改变应用开发，以及哪些能力值得长期积累。"><meta property="og:type" content="article"><meta property="og:url" content="https://meiying-cell.github.io/blog/llm-experience-shelf-life/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/blog/blog.css"><link rel="alternate" type="application/rss+xml" title="朱波的博客" href="/blog/feed.xml"><script src="/blog/blog.js" defer></script></head><body class="blog-page"><a class="skip" href="#main" data-zh="跳至正文" data-en="Skip to content">跳至正文</a><div class="reading-progress" aria-hidden="true"></div><header class="site-header blog-header"><a class="wordmark" href="/" aria-label="Bo Zhu 首页">bz<span>.</span></a><nav aria-label="主导航"><a href="/" data-zh="个人主页" data-en="Home">个人主页</a><a href="/blog/" class="active" data-zh="博客" data-en="Blog">博客</a></nav><div class="controls"><button id="blog-language" aria-label="Switch interface to English"><b>中</b><span class="divider">/</span>EN</button><button id="blog-theme" aria-label="切换深色主题"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.8 13.4A8.7 8.7 0 0 1 10.6 3.2 8.8 8.8 0 1 0 20.8 13.4Z"/></svg></button></div></header><main id="main" class="wrap article-main"><div class="article-breadcrumb"><a href="/blog/" data-zh="← 全部文章" data-en="← All posts">← 全部文章</a><span>/</span><a href="/blog/?category=personal-reflections"><span class="category-name" data-zh="个人思考" data-en="Personal Reflections">个人思考</span></a></div><header class="article-header"><div class="article-meta"><time datetime="2026-10-22">2026-10-22</time><span>BO ZHU / 朱波</span><span data-zh="约 7 分钟 · 中文原文" data-en="~7 min · Chinese original">约 7 分钟 · 中文原文</span></div><h1 lang="zh-CN">做过大模型实习后，我开始给技术经验标注‘保质期’</h1><p class="article-deck" lang="zh-CN">从后训练和 RAG 的实习经历出发，聊聊模型进步如何改变应用开发，以及哪些能力值得长期积累。</p><div class="article-tags"><a href="/blog/?tag=%E5%A4%A7%E6%A8%A1%E5%9E%8B">大模型</a><a href="/blog/?tag=%E5%AE%9E%E4%B9%A0%E6%84%9F%E6%82%9F">实习感悟</a><a href="/blog/?tag=RAG">RAG</a><a href="/blog/?tag=Agent">Agent</a></div></header><div class="article-layout"><aside class="article-toc"><details open><summary data-zh="本文目录" data-en="On this page">本文目录</summary><ol><li><a href="#section-1">1. 当时有用的方法，后来可能不再需要</a></li><li><a href="#section-2">2. 我们积累的经验，也可能成为模型的学习材料</a></li><li><a href="#section-3">3. Agent = Model + Harness，但 Harness 也会变</a></li><li><a href="#section-4">4. 更多人会围绕模型做开发</a></li><li><a href="#section-5">5. 我更想积累的是做选择的能力</a></li><li><a href="#section-6">6. 给现在的自己留个记录</a></li></ol></details></aside><div><article class="article-body" lang="zh-CN"><p>前一年做大模型实习时，我接触了后训练和 RAG。最近回头看这段经历，有一个感触越来越明显：这个领域里，一些技术经验的保质期，可能比我原来想的短很多。</p>
+
+<p>当时值得花时间研究的问题，随着基础模型进步，可能逐渐变得容易。有些过去需要微调、设计流程、增加组件才能完成的任务，换一个模型，给足上下文，也许就能得到不错的结果。</p>
+
+<p>这种变化多少会让人有点失落。毕竟，理解一种方法、学会一套工具，都需要投入时间。如果它们很快就不再那么重要，那之前学的东西还剩下多少价值？</p>
+
+<p>我现在还没有一个完整的答案。不过，这个疑问让我开始重新理解，大模型应用开发到底在积累什么。</p>
+
+<h2 id="section-1">1. 当时有用的方法，后来可能不再需要</h2>
+
+<p>最初冒出来的想法很直接：后训练和 RAG，是不是已经有点 out 了？</p>
+
+<p>但这个说法太大了。</p>
+
+<p>后训练依然是提升模型能力的重要路径。DeepSeek-R1 就展示了强化学习和蒸馏在推理能力上的作用。我们在应用里做的某一次微调，与模型团队进行的大规模后训练，虽然共享一些技术概念，面对的条件和目标却可能相差很远。<a href="https://arxiv.org/abs/2501.12948">技术报告</a></p>
+
+<p>RAG 也一样。模型上下文变长，确实可能让一些小知识库不再需要复杂的检索流程。可企业内部的数据还在更新，不同用户能看的内容也不一样，回答有时还需要给出可检查的来源。这些需求并不会因为模型变聪明就自动消失。</p>
+
+<p>所以，我现在更愿意把最初那个感触说得具体一点：<strong>某些方案所针对的能力缺口，正在被基础模型填上。</strong></p>
+
+<p>一套方案当时有用，可能是因为当时的模型确实需要帮助。后来模型进步，这套方案的收益变小了，也很正常。只是我们需要重新检查，它是否还值得保留。</p>
+
+<p>这件事让我觉得，技术经验最好带上适用条件。</p>
+
+<p>用的是哪个模型，处理什么任务，数据规模多大，成本和延迟有什么要求，最后用什么方式判断效果。离开这些条件，单独说“微调有效”或者“RAG 不行”，其实很难指导下一次决策。</p>
+
+<p>当然，我也不能仅凭模型发布时的展示，就认定过去的方案已经没有必要。我的这个感触，目前仍然包含很多观察和推测。真要判断，还得把新模型放回原来的任务里，在相同条件下比较。</p>
+
+<p>但至少，我会更警惕把一套阶段性的做法，当成长期有效的答案。</p>
+
+<figure class="article-figure"><a href="/blog/assets/model-capability-simplification.svg" target="_blank" rel="noopener" aria-label="查看模型与工程流程概念图大图"><img src="/blog/assets/model-capability-simplification.svg" width="1800" height="1200" loading="lazy" alt="模型升级前后工程流程的概念对比：部分编排与格式修补可以简化，业务材料、访问权限和结果验证仍然需要处理。"></a><figcaption>概念示意：模型能力变化后，部分工程组件可以简化；业务材料、访问权限和结果验证仍需处理。此图不表示实测性能。<a href="/blog/assets/model-capability-simplification.svg" target="_blank" rel="noopener">查看大图 ↗</a></figcaption></figure>
+
+<h2 id="section-2">2. 我们积累的经验，也可能成为模型的学习材料</h2>
+
+<p>另一个让我觉得有意思的地方是，我们围绕模型做的这些尝试，本身也可能参与模型下一阶段的进步。</p>
+
+<p>人们不断写教程、整理失败案例、记录工具调用、总结怎样完成一个复杂任务。这些内容里，包含了大量关于“事情应该怎么做”的经验。经过收集、筛选和验证，其中一部分可能成为训练数据，也可能为新的训练任务和评测提供思路。</p>
+
+<p>当然，公开写下来的东西，不一定会被用于训练；被用于训练，也不代表模型一定能学好。具体到某一次使用，更不能默认它就进入了训练流程。</p>
+
+<p>不过，从更长的时间看，我觉得这里存在一个反馈过程：人先探索出一种有效的工作方式，把它写成流程、工具或案例；其中可重复、可泛化的部分，再有机会进入模型或平台的能力。</p>
+
+<p>于是，过去需要我们反复提醒的步骤，后来模型可能自己就会做了。过去由外部流程承担的一部分工作，也可能被逐渐吸收。</p>
+
+<p>对应用开发者来说，这既是好事，也有一点残酷。我们希望模型越来越好，同时又得接受，模型变好之后，自己曾经花力气搭建的某些东西可能需要被删掉。</p>
+
+<h2 id="section-3">3. Agent = Model + Harness，但 Harness 也会变</h2>
+
+<p>最近经常看到一个表达：<strong>Agent = Model + Harness。</strong></p>
+
+<p>我觉得它挺适合帮助理解现在的开发工作。这里的 harness，可以理解成让模型持续做事的那套外围系统：给它提供什么上下文，允许它调用哪些工具，怎样保存状态，出错后怎么恢复，以及怎样检查任务是否真的完成。</p>
+
+<p>模型能生成一个看起来合理的答案，和一个系统能把事情做完，中间还有不少距离。</p>
+
+<p>尤其当任务需要持续执行时，每一步的结果都会影响下一步。工具可能失败，信息可能过期，上下文可能遗漏，模型也可能误判自己已经完成了任务。这些事情都需要在实际系统中处理。</p>
+
+<p>不过，harness 同样有保质期。</p>
+
+<p>Anthropic 在一篇长任务开发的文章里提到，他们曾为 Sonnet 4.5 设计上下文重置机制；后来换用 Opus 4.5，在那个项目中就可以移除这部分设计。<a href="https://www.anthropic.com/research/harness-design-long-running-apps">原文</a></p>
+
+<p>这个例子让我印象很深。我们今天觉得必要的工程设计，可能恰好对应着今天模型的某个弱点。模型升级之后，继续保留它，反而可能带来额外成本。</p>
+
+<p>所以，学会一个 agent 框架，也不能让人从此摆脱技术变化。还是要知道，每个组件为什么存在。</p>
+
+<h2 id="section-4">4. 更多人会围绕模型做开发</h2>
+
+<p>想到这里，我对自己未来做什么，也有了一点新的认识。</p>
+
+<p>我的判断是，未来更多从业者会围绕已有模型开发系统。训练前沿基础模型的机会，则会集中在相对少数的团队。这是我对行业分工的理解，谈不上什么准确预测。</p>
+
+<p>对我自己来说，这意味着有必要认真看待“开发”这件事。</p>
+
+<p>把一个模糊需求变成可以验收的任务，找到合适的数据，建立评测，定位失败原因，在效果、成本和延迟之间做取舍，这些都需要判断。模型能力越强，能够尝试的事情越多，这些判断也就越需要跟上。</p>
+
+<p>我依然想理解后训练和 RAG 的原理。理解得更深，才更有可能知道什么时候该用，什么时候可以省掉。只是我不太想再用“会多少技术名词”来衡量自己的积累了。</p>
+
+<h2 id="section-5">5. 我更想积累的是做选择的能力</h2>
+
+<p>如果以后做一个项目，我希望自己至少能说清楚几件事：它解决了什么问题，为什么选择这个方案，效果有什么证据，以及模型升级后，哪些部分需要重新评估。</p>
+
+<p>这些问题听起来朴素，却很难靠追一个新概念就回答好。</p>
+
+<p>比如，遇到效果不好的任务，先分清是信息没给够、模型能力不足，还是任务本身就没有定义清楚。决定引入微调或检索之前，也应该知道，最简单的方案到底差在哪里。</p>
+
+<p>我想，这些判断会比某个框架的调用方式更经得起变化。即使工具换了，还是要有人理解问题、比较方案、检查结果。</p>
+
+<p>而且，做选择也包括接受简化。如果模型升级后，一个组件确实不再带来收益，愿意把它删掉，应该也是工程能力的一部分。毕竟，系统最终要解决问题，维护复杂性本身也需要付出成本。</p>
+
+<h2 id="section-6">6. 给现在的自己留个记录</h2>
+
+<p>回头看那段实习，我现在愿意承认，有些具体做法可能会过时。也许以后再遇到相似任务，已经可以用更简单的方式完成。</p>
+
+<p>但那段经历给了我一个机会，去接触模型的能力边界，也开始意识到，技术选择总是和当时的条件绑在一起。</p>
+
+<p>以后整理经验时，我想给它多加一句注释：这是在什么条件下得到的结论。</p>
+
+<p>至于它能用多久，就留给下一次实践来检查。</p>
+
+<p>把这些想法写下来，也算给现在的自己留一个记录。过一两年再回来看，也许其中一些判断也需要修改。我希望到时候能说清楚，是什么新的事实，让我改变了想法。</p>
+</article><div class="article-closing"><span class="mono">END OF NOTE</span><a href="/blog/" data-zh="返回博客 ↗" data-en="Back to blog ↗">返回博客 ↗</a></div><nav class="related-posts" aria-label="更多文章"><a href="/blog/ai-problem-solving-loop/"><span data-zh="继续阅读" data-en="Read next">继续阅读</span><strong lang="zh-CN">AI 时代，我开始更在意解决问题的能力</strong><span aria-hidden="true">↗</span></a><a href="/blog/algorithm-engineer-product-thinking/"><span data-zh="继续阅读" data-en="Read next">继续阅读</span><strong lang="zh-CN">算法工程师，也需要产品思维</strong><span aria-hidden="true">↗</span></a></nav></div></div></main><footer class="wrap blog-footer"><span>© 2026 Bo Zhu</span><span data-zh="在实践中思考，在文字中记录。" data-en="Notes from practice. Thoughts in progress.">在实践中思考，在文字中记录。</span><a href="#main" data-zh="回到顶部 ↑" data-en="Back to top ↑">回到顶部 ↑</a></footer></body></html>

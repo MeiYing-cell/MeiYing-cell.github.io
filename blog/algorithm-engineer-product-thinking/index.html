@@ -1,0 +1,56 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>算法工程师，也需要产品思维 · 朱波</title><meta name="description" content="算法方案的技术深度值得追求，但也需要回答：问题是否重要，简单方案是否够用，增加的复杂度是否值得。"><meta name="theme-color" content="#f8f9f5"><link rel="canonical" href="https://meiying-cell.github.io/blog/algorithm-engineer-product-thinking/"><meta property="og:title" content="算法工程师，也需要产品思维"><meta property="og:description" content="算法方案的技术深度值得追求，但也需要回答：问题是否重要，简单方案是否够用，增加的复杂度是否值得。"><meta property="og:type" content="article"><meta property="og:url" content="https://meiying-cell.github.io/blog/algorithm-engineer-product-thinking/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/blog/blog.css"><link rel="alternate" type="application/rss+xml" title="朱波的博客" href="/blog/feed.xml"><script src="/blog/blog.js" defer></script></head><body class="blog-page"><a class="skip" href="#main" data-zh="跳至正文" data-en="Skip to content">跳至正文</a><div class="reading-progress" aria-hidden="true"></div><header class="site-header blog-header"><a class="wordmark" href="/" aria-label="Bo Zhu 首页">bz<span>.</span></a><nav aria-label="主导航"><a href="/" data-zh="个人主页" data-en="Home">个人主页</a><a href="/blog/" class="active" data-zh="博客" data-en="Blog">博客</a></nav><div class="controls"><button id="blog-language" aria-label="Switch interface to English"><b>中</b><span class="divider">/</span>EN</button><button id="blog-theme" aria-label="切换深色主题"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.8 13.4A8.7 8.7 0 0 1 10.6 3.2 8.8 8.8 0 1 0 20.8 13.4Z"/></svg></button></div></header><main id="main" class="wrap article-main"><div class="article-breadcrumb"><a href="/blog/" data-zh="← 全部文章" data-en="← All posts">← 全部文章</a><span>/</span><a href="/blog/?category=personal-reflections"><span class="category-name" data-zh="个人思考" data-en="Personal Reflections">个人思考</span></a></div><header class="article-header"><div class="article-meta"><time datetime="2026-10-22">2026-10-22</time><span>BO ZHU / 朱波</span><span data-zh="约 3 分钟 · 中文原文" data-en="~3 min · Chinese original">约 3 分钟 · 中文原文</span></div><h1 lang="zh-CN">算法工程师，也需要产品思维</h1><p class="article-deck" lang="zh-CN">算法方案的技术深度值得追求，但也需要回答：问题是否重要，简单方案是否够用，增加的复杂度是否值得。</p><div class="article-tags"><a href="/blog/?tag=%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88">算法工程师</a><a href="/blog/?tag=%E4%BA%A7%E5%93%81%E6%80%9D%E7%BB%B4">产品思维</a><a href="/blog/?tag=%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F">个人感悟</a></div></header><div class="article-layout"><aside class="article-toc"><details open><summary data-zh="本文目录" data-en="On this page">本文目录</summary><ol><li><a href="#section-1">1. 先看问题，再选技术</a></li><li><a href="#section-2">2. 给简单方案一个机会</a></li><li><a href="#section-3">3. 算法指标之外，还要看实际效果</a></li><li><a href="#section-4">4. 从科研走向产品，要调整评价标准</a></li><li><a href="#section-5">5. 我希望自己能解释“为什么值得”</a></li></ol></details></aside><div><article class="article-body" lang="zh-CN"><p>作为算法工程师，我最近越来越觉得，产品思维应该是自己需要认真补上的一部分。</p>
+
+<p>技术本身很容易让人投入。一个方法足够新，模型结构足够巧妙，推导足够漂亮，就会让人想继续研究。我能理解这种吸引力，也觉得愿意钻研是好事。</p>
+
+<p>但在做产品时，我想提醒自己多问一句：这个问题，真的需要这样解决吗？</p>
+
+<h2 id="section-1">1. 先看问题，再选技术</h2>
+
+<p>面对一个需求，很容易顺着自己熟悉的方向想：能不能换模型，加一个模块，或者引入新的训练方法。</p>
+
+<p>我觉得这里值得停一下。用户到底遇到了什么困难？问题发生在什么环节？现在的效果不好，是算法能力不足，还是数据、流程、交互出了问题？</p>
+
+<p>比如，假设一个问答功能经常答错，原因可能是模型理解不够，也可能只是资料过期，或者根本没有把相关信息提供给模型。原因没弄清楚，直接换更复杂的模型，未必能解决。</p>
+
+<p>产品思维对我来说，首先就是愿意把注意力放回整个问题，而不只盯着自己能改的那一块。</p>
+
+<h2 id="section-2">2. 给简单方案一个机会</h2>
+
+<p>一个问题可能有更简单的解法：几条清楚的规则，一次数据清理，一个流程调整，或者一个现成模型，就已经够用。</p>
+
+<p>这些方案可能没那么有技术上的吸引力，但值得认真比较。</p>
+
+<p>我希望自己在选择复杂方案之前，先知道简单方案能做到哪一步，具体卡在哪里。这样，后面增加的每一层复杂度，才有一个明确的理由。</p>
+
+<p>当然，有些简单方案到了规模变大、需求变多的时候，会越来越难维护。是否值得采用，也要看长期成本。这里同样需要判断，不能只凭代码少、上线快就下结论。</p>
+
+<h2 id="section-3">3. 算法指标之外，还要看实际效果</h2>
+
+<p>算法指标能帮助我们比较方法，但一个方案放进产品以后，还有延迟、成本、稳定性、维护难度，以及用户是否真的受益。</p>
+
+<p>离线效果更好，如果响应慢到影响使用，或者维护投入超过团队能承受的范围，就需要重新权衡。</p>
+
+<p>所以，讨论方案时，我希望自己能多说清楚几件事：改善的是哪种体验，代价是什么，怎样验证，什么情况下值得继续投入。</p>
+
+<p>技术深度在这里依然重要。理解得足够深，才更容易找到真正需要改进的地方，也更有把握判断哪些设计可以省掉。</p>
+
+<h2 id="section-4">4. 从科研走向产品，要调整评价标准</h2>
+
+<p>我觉得，有科研背景的人可能尤其需要留意这个切换。</p>
+
+<p>科研里，我们会关心新颖性、方法贡献，以及相对已有工作的进步。这些目标有它们的意义。探索一个还不能立即落地的方向，也完全可以有价值。</p>
+
+<p>但当任务变成解决一个具体的产品问题时，选择方案的依据也需要跟着调整。一个已有方法，如果在当前条件下足够有效、可靠、成本合适，就值得采用。</p>
+
+<p>论文需要回答自己的研究问题，产品也有自己的验收条件。把两边的目标想清楚，能减少一些不必要的纠结。</p>
+
+<h2 id="section-5">5. 我希望自己能解释“为什么值得”</h2>
+
+<p>对我来说，算法工程师的产品思维，不意味着每个人都要去做产品经理，而是对方案最终产生的效果多承担一点责任。</p>
+
+<p>除了讲清楚原理和实现，也能解释为什么要做，为什么选这条路，以及投入这些时间和资源是否值得。</p>
+
+<p>如果一个简单方法已经能把问题解决好，我希望自己愿意选它。如果确实需要更复杂的算法，也希望能拿出具体的理由和证据。</p>
+
+<p>技术上能做的事情很多。能判断眼下最值得做哪一件，我觉得也是算法工程师需要练习的能力。</p>
+</article><div class="article-closing"><span class="mono">END OF NOTE</span><a href="/blog/" data-zh="返回博客 ↗" data-en="Back to blog ↗">返回博客 ↗</a></div><nav class="related-posts" aria-label="更多文章"><a href="/blog/llm-experience-shelf-life/"><span data-zh="继续阅读" data-en="Read next">继续阅读</span><strong lang="zh-CN">做过大模型实习后，我开始给技术经验标注‘保质期’</strong><span aria-hidden="true">↗</span></a><a href="/blog/ai-problem-solving-loop/"><span data-zh="继续阅读" data-en="Read next">继续阅读</span><strong lang="zh-CN">AI 时代，我开始更在意解决问题的能力</strong><span aria-hidden="true">↗</span></a></nav></div></div></main><footer class="wrap blog-footer"><span>© 2026 Bo Zhu</span><span data-zh="在实践中思考，在文字中记录。" data-en="Notes from practice. Thoughts in progress.">在实践中思考，在文字中记录。</span><a href="#main" data-zh="回到顶部 ↑" data-en="Back to top ↑">回到顶部 ↑</a></footer></body></html>
