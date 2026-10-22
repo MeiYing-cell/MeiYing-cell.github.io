@@ -6,6 +6,14 @@
     <description>算法、大模型、产品与个人成长</description>
     <language>zh-CN</language>
     <item>
+      <title>多个 AI Agent 一起干活，任务该放在哪里？聊聊 Beads</title>
+      <link>https://meiying-cell.github.io/blog/beads-shared-agent-tasks/</link>
+      <guid>https://meiying-cell.github.io/blog/beads-shared-agent-tasks/</guid>
+      <description>从研究仓库里的共享任务需求出发，介绍 Beads 怎样记录任务、认领和依赖，以及一次证据整理与论文写作的协作试用。</description>
+      <category>技术实践</category>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 +0800</pubDate>
+    </item>
+    <item>
       <title>做过大模型实习后，我开始给技术经验标注‘保质期’</title>
       <link>https://meiying-cell.github.io/blog/llm-experience-shelf-life/</link>
       <guid>https://meiying-cell.github.io/blog/llm-experience-shelf-life/</guid>

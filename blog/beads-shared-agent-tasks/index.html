@@ -1,0 +1,116 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>多个 AI Agent 一起干活，任务该放在哪里？聊聊 Beads · 朱波</title><meta name="description" content="从研究仓库里的共享任务需求出发，介绍 Beads 怎样记录任务、认领和依赖，以及一次证据整理与论文写作的协作试用。"><meta name="theme-color" content="#f8f9f5"><link rel="canonical" href="https://meiying-cell.github.io/blog/beads-shared-agent-tasks/"><meta property="og:title" content="多个 AI Agent 一起干活，任务该放在哪里？聊聊 Beads"><meta property="og:description" content="从研究仓库里的共享任务需求出发，介绍 Beads 怎样记录任务、认领和依赖，以及一次证据整理与论文写作的协作试用。"><meta property="og:type" content="article"><meta property="og:url" content="https://meiying-cell.github.io/blog/beads-shared-agent-tasks/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/blog/blog.css"><link rel="alternate" type="application/rss+xml" title="朱波的博客" href="/blog/feed.xml"><script src="/blog/blog.js" defer></script></head><body class="blog-page"><a class="skip" href="#main" data-zh="跳至正文" data-en="Skip to content">跳至正文</a><div class="reading-progress" aria-hidden="true"></div><header class="site-header blog-header"><a class="wordmark" href="/" aria-label="Bo Zhu 首页">bz<span>.</span></a><nav aria-label="主导航"><a href="/" data-zh="个人主页" data-en="Home">个人主页</a><a href="/blog/" class="active" data-zh="博客" data-en="Blog">博客</a></nav><div class="controls"><button id="blog-language" aria-label="Switch interface to English"><b>中</b><span class="divider">/</span>EN</button><button id="blog-theme" aria-label="切换深色主题"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.8 13.4A8.7 8.7 0 0 1 10.6 3.2 8.8 8.8 0 1 0 20.8 13.4Z"/></svg></button></div></header><main id="main" class="wrap article-main"><div class="article-breadcrumb"><a href="/blog/" data-zh="← 全部文章" data-en="← All posts">← 全部文章</a><span>/</span><a href="/blog/?category=technical-practice"><span class="category-name" data-zh="技术实践" data-en="Technical Practice">技术实践</span></a></div><header class="article-header"><div class="article-meta"><time datetime="2026-10-22">2026-10-22</time><span>BO ZHU / 朱波</span><span data-zh="约 6 分钟 · 中文原文" data-en="~6 min · Chinese original">约 6 分钟 · 中文原文</span></div><h1 lang="zh-CN">多个 AI Agent 一起干活，任务该放在哪里？聊聊 Beads</h1><p class="article-deck" lang="zh-CN">从研究仓库里的共享任务需求出发，介绍 Beads 怎样记录任务、认领和依赖，以及一次证据整理与论文写作的协作试用。</p><div class="article-tags"><a href="/blog/?tag=AI%20Agent">AI Agent</a><a href="/blog/?tag=Beads">Beads</a><a href="/blog/?tag=%E5%A4%9A%20Agent%20%E5%8D%8F%E4%BD%9C">多 Agent 协作</a><a href="/blog/?tag=%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7">开发工具</a></div></header><div class="article-layout"><aside class="article-toc"><details open><summary data-zh="本文目录" data-en="On this page">本文目录</summary><ol><li><a href="#section-1">1. 聊天里说清楚了，项目里还得留得下来</a></li><li><a href="#section-2">2. Beads 是什么</a></li><li><a href="#section-3">3. 有用的地方，在于知道什么可以开始</a></li><li><a href="#section-4">4. 今天的试用，走通了怎样的交接</a></li><li><a href="#section-5">5. 共享任务，不代表其他问题都解决了</a></li><li><a href="#section-6">6. 让我感兴趣的，是任务可以被接着做</a></li></ol></details></aside><div><article class="article-body" lang="zh-CN"><p>今天，我的研究仓库里有一个很具体的需求：让多个 AI agent 分工做事，同时知道彼此在做什么。</p>
+
+<p>一个负责整理证据，一个负责论文写作。有些部分可以同时推进，有些部分必须等上游交付。项目还可能分在不同的工作树里，不能指望每个 agent 都看过其他聊天。</p>
+
+<p>单独给它们布置任务并不难。接下来，谁在负责哪一块，进度到哪里，下一步要等谁，就需要有个共同查看的地方。</p>
+
+<p>这次接触的项目是 <a href="https://github.com/gastownhall/beads">Beads</a>。我觉得它很适合从这个需求开始理解。</p>
+
+<h2 id="section-1">1. 聊天里说清楚了，项目里还得留得下来</h2>
+
+<p>和一个 agent 连续讨论时，上下文似乎都很清楚。但换一个聊天，或者让另一个 agent 接手，就需要重新交代任务、决定和进度。</p>
+
+<p>当然，可以写 Markdown，把计划和交接保存下来。对很多任务，这已经够用。</p>
+
+<p>但多人同时推进时，还会多出一些要求：任务有没有被认领？两个人是不是准备做同一件事？某一步没完成，哪些后续工作就不能开始？</p>
+
+<p>这些信息如果散落在各自的文档和聊天里，人就需要反复核对。我希望能有一份共享的任务状态，让大家从同一个地方接着做。</p>
+
+<h2 id="section-2">2. Beads 是什么</h2>
+
+<p>Beads 的官方定位是为 coding agent 提供持久、结构化的记忆。理解它时，我更愿意先把它看成一个带依赖关系的任务系统。</p>
+
+<p>一个任务可以有编号、描述、负责人和状态，也可以关联其他任务。Agent 通过命令行查询和更新，结果可以用 JSON 返回，方便后续程序处理。当前版本使用 Dolt 保存数据；Dolt 提供数据库的版本管理能力。<a href="https://github.com/gastownhall/beads/blob/main/README.md">官方 README</a></p>
+
+<p>几个核心操作就能说明它的用途：</p>
+
+<table tabindex="0" aria-label="数据表格，可横向滚动查看">
+<thead>
+<tr>
+  <th>操作</th>
+  <th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>bd create</code></td>
+  <td>建立任务，写清楚要做什么</td>
+</tr>
+<tr>
+  <td><code>bd ready</code></td>
+  <td>查询没有未完成前置阻塞的待办</td>
+</tr>
+<tr>
+  <td><code>bd update &lt;id&gt; --claim</code></td>
+  <td>原子认领任务，设置负责人和进行中状态</td>
+</tr>
+<tr>
+  <td><code>bd show &lt;id&gt;</code></td>
+  <td>查看任务详情</td>
+</tr>
+<tr>
+  <td><code>bd dep add &lt;下游&gt; &lt;上游&gt;</code></td>
+  <td>设置前置依赖</td>
+</tr>
+<tr>
+  <td><code>bd close &lt;id&gt;</code></td>
+  <td>关闭任务，记录交付说明</td>
+</tr>
+</tbody>
+</table>
+
+<p>这里的“记忆”有一个明确的载体：任务记录和关系。重新开始工作的 agent 可以查询它们，恢复对项目进度的理解。至于接下来怎么执行，仍然需要 agent 自己处理。</p>
+
+<h2 id="section-3">3. 有用的地方，在于知道什么可以开始</h2>
+
+<p>拿今天的协作需求来说，可以拆成三件事：整理证据、写论文大纲、写结果段落。</p>
+
+<p>前两项可以并行。结果段落需要用到它们的产物，就应该明确等待两项交付。</p>
+
+<pre><code>整理证据 ──┐
+           ├──→ 写结果段落
+完成大纲 ──┘
+</code></pre>
+
+<p>把三个任务放进同一个总任务，只说明它们属于同一件事。要表达执行顺序，还需要显式建立依赖。</p>
+
+<p>Beads 会根据这些关系计算哪些任务可以开始。上游尚未关闭时，被阻塞的下游不会出现在 <code>ready</code> 里；前置任务关闭后，下游才会解阻。<a href="https://github.com/gastownhall/beads/blob/main/docs/core-concepts/dependencies.md">依赖关系文档</a></p>
+
+<p>对我来说，这比单纯列一张待办清单更贴近实际工作：可以并行的先做，需要等待的就保留等待关系，不必把所有事情都排成一条长队。</p>
+
+<p>不过，状态解阻还不等于产物验收。上游关闭时仍需要写清楚结果，下游也需要读取文件、检查内容，确认它能支撑后续工作。</p>
+
+<h2 id="section-4">4. 今天的试用，走通了怎样的交接</h2>
+
+<p>研究仓库里已经做过一次小范围试用。</p>
+
+<p>证据整理和论文大纲分别认领、并行推进。结果草稿任务依赖这两项；证据还没交付时，论文侧先等待，交付后再查询可执行任务、认领，并读取真实文件。交接时还记录了证据文件的哈希，明确接收到的是哪一份产物。</p>
+
+<p>这次用的是已有研究材料，没有启动新的科学实验。它验证的是任务拆分、认领、等待和交接这条流程可以工作，还不能据此宣称带来了多少效率提升。</p>
+
+<p>本地实现也做了一个选择：不同工作树通过统一入口访问同一份任务库。任务属于整个协作项目，就不能每个工作树各维护一份、最后再靠人猜哪份是最新状态。</p>
+
+<p>另外加了一层只读看板，方便查看负责人和进度。这个看板是本地项目补充的功能；Beads 自身承担的是底下的任务记录与依赖管理。</p>
+
+<h2 id="section-5">5. 共享任务，不代表其他问题都解决了</h2>
+
+<p>我觉得用这类工具时，需要分清几件事。</p>
+
+<p>任务被认领，只表示台账里有了负责人。它不能保证 agent 一直在线，也不能阻止两个不同任务修改同一个文件。文件范围、代码提交和冲突处理，仍然需要另外协调。</p>
+
+<p>Beads 支持持久保存和同步相关能力，但跨电脑协作需要实际配置。当前本地部署还没有配置异机同步，提交了研究代码，也不能据此推断任务数据库已经同步过去。<a href="https://github.com/gastownhall/beads/blob/main/README.md#-storage-modes">存储与同步说明</a></p>
+
+<p>任务状态与计算资源状态也需要分开。一个任务关闭了，不代表占用的 GPU 已经释放，更不代表租用实例已经关机。这些事情各有自己的检查和记录。</p>
+
+<p>Beads 在这里提供了共同的任务依据，实际执行和验收仍要有人负责。</p>
+
+<h2 id="section-6">6. 让我感兴趣的，是任务可以被接着做</h2>
+
+<p>如果只是一个短任务、一个 agent，一份清楚的计划文档可能就够了。</p>
+
+<p>当任务持续时间变长，需要多人分工、等待依赖，或者中断后继续时，共享任务系统的价值才更容易体现出来。</p>
+
+<p>这也让我对 agent 周围的工程多了一点理解。模型能力之外，还要考虑工作怎样留下记录，责任怎样明确，产物怎样交接。把这些事情安排好，下一次开始时才不必重新猜一遍。</p>
+
+<p>Beads 是我这次看到的一种做法。它最吸引我的地方，是让一个 agent 结束之后，另一个 agent 有依据把事情接着做下去。</p>
+</article><div class="article-closing"><span class="mono">END OF NOTE</span><a href="/blog/" data-zh="返回博客 ↗" data-en="Back to blog ↗">返回博客 ↗</a></div><nav class="related-posts" aria-label="更多文章"><a href="/blog/llm-experience-shelf-life/"><span data-zh="继续阅读" data-en="Read next">继续阅读</span><strong lang="zh-CN">做过大模型实习后，我开始给技术经验标注‘保质期’</strong><span aria-hidden="true">↗</span></a><a href="/blog/ai-problem-solving-loop/"><span data-zh="继续阅读" data-en="Read next">继续阅读</span><strong lang="zh-CN">AI 时代，我开始更在意解决问题的能力</strong><span aria-hidden="true">↗</span></a><a href="/blog/algorithm-engineer-product-thinking/"><span data-zh="继续阅读" data-en="Read next">继续阅读</span><strong lang="zh-CN">算法工程师，也需要产品思维</strong><span aria-hidden="true">↗</span></a></nav></div></div></main><footer class="wrap blog-footer"><span>© 2026 Bo Zhu</span><span data-zh="在实践中思考，在文字中记录。" data-en="Notes from practice. Thoughts in progress.">在实践中思考，在文字中记录。</span><a href="#main" data-zh="回到顶部 ↑" data-en="Back to top ↑">回到顶部 ↑</a></footer></body></html>
