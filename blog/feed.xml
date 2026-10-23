@@ -6,6 +6,14 @@
     <description>算法、大模型、产品与个人成长</description>
     <language>zh-CN</language>
     <item>
+      <title>搜广推还是大模型？我发现自己更想离业务近一点</title>
+      <link>https://meiying-cell.github.io/blog/search-rec-ads-or-llm/</link>
+      <guid>https://meiying-cell.github.io/blog/search-rec-ads-or-llm/</guid>
+      <description>从担心大模型应用工作的价值被模型升级削弱，到重新理解业务反馈怎样帮助个人积累能力，以及这如何影响我的职业选择。</description>
+      <category>个人思考</category>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0800</pubDate>
+    </item>
+    <item>
       <title>多个 AI Agent 一起干活，任务该放在哪里？聊聊 Beads</title>
       <link>https://meiying-cell.github.io/blog/beads-shared-agent-tasks/</link>
       <guid>https://meiying-cell.github.io/blog/beads-shared-agent-tasks/</guid>
