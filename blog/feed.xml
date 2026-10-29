@@ -1,10 +1,20 @@
 <?xml version='1.0' encoding='utf-8'?>
-<rss version="2.0">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <title>朱波的博客</title>
     <link>https://meiying-cell.github.io/blog/</link>
     <description>算法、大模型、产品与个人成长</description>
     <language>zh-CN</language>
+    <item>
+      <title>进取心胜过资历：给初级工程师的建议</title>
+      <link>https://meiying-cell.github.io/blog/hunger-beats-tenure-translation/</link>
+      <guid>https://meiying-cell.github.io/blog/hunger-beats-tenure-translation/</guid>
+      <description>Felix Rieseberg《Hunger beats tenure: Advice for junior engineers》中文全文翻译。</description>
+      <category>阅读与译介</category>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0800</pubDate>
+      <dc:creator>Felix Rieseberg</dc:creator>
+      <dc:contributor>朱波</dc:contributor>
+    </item>
     <item>
       <title>搜广推还是大模型？我发现自己更想离业务近一点</title>
       <link>https://meiying-cell.github.io/blog/search-rec-ads-or-llm/</link>
